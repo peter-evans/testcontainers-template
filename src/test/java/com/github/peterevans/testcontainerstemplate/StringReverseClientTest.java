@@ -3,7 +3,7 @@ package com.github.peterevans.testcontainerstemplate;
 import org.junit.Test;
 
 /**
- * Tests for StringReverseClient.
+ * Unit tests for StringReverseClient.
  */
 public class StringReverseClientTest {
     @Test
