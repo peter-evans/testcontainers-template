@@ -1,10 +1,13 @@
 package com.github.peterevans.testcontainerstemplate;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.images.builder.ImageFromDockerfile;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Integration tests for StringReverseClient.
@@ -15,10 +18,23 @@ public class StringReverseClientIT {
     public GenericContainer srContainer = new GenericContainer(
             new ImageFromDockerfile()
                     .withFileFromClasspath("nginx.conf", "string-reverse-server/nginx.conf")
-                    .withFileFromClasspath("Dockerfile", "string-reverse-server/Dockerfile"));
+                    .withFileFromClasspath("Dockerfile", "string-reverse-server/Dockerfile"))
+                    .withExposedPorts(8080);
+
+    StringReverseClient srClient;
+
+    @Before
+    public void testSetup() throws Exception {
+        srClient = new StringReverseClient(
+                srContainer.getContainerIpAddress(),
+                srContainer.getMappedPort(8080));
+    }
 
     @Test
     public void canReverseString() throws Exception {
-        StringReverseClient srClient = new StringReverseClient("http://localhost:8080/");
+        String testStr = "reverse-me";
+        String expected = "em-esrever";
+        String actual = srClient.reverse(testStr);
+        assertEquals(expected, actual);
     }
 }

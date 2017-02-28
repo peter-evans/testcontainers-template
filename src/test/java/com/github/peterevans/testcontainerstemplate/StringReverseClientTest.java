@@ -10,6 +10,6 @@ import org.junit.experimental.categories.Category;
 public class StringReverseClientTest {
     @Test
     public void canCreateStringReverseClient() throws Exception {
-        StringReverseClient srClient = new StringReverseClient("http://localhost:8080/");
+        StringReverseClient srClient = new StringReverseClient("localhost", 8080);
     }
 }
