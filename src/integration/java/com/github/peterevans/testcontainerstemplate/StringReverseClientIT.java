@@ -21,7 +21,7 @@ public class StringReverseClientIT {
                     .withFileFromClasspath("Dockerfile", "string-reverse-server/Dockerfile"))
                     .withExposedPorts(8080);
 
-    StringReverseClient srClient;
+    private StringReverseClient srClient;
 
     @Before
     public void testSetup() throws Exception {
