@@ -2,12 +2,14 @@ package com.github.peterevans.testcontainerstemplate;
 
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.experimental.categories.Category;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.images.builder.ImageFromDockerfile;
 
 /**
  * Integration tests for StringReverseClient.
  */
+@Category(IntegrationTest.class)
 public class StringReverseClientIT {
     @Rule
     public GenericContainer srContainer = new GenericContainer(
