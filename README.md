@@ -1,15 +1,15 @@
 # testcontainers-template
 
-This is a template project demonstrating how the [TestContainers](https://github.com/testcontainers/testcontainers-java) library can be used to perform integration tests against a containerised system under test (SUT).
+This is a bare-bones project demonstrating how the [TestContainers](https://github.com/testcontainers/testcontainers-java) library can be used to perform integration tests against a containerised system under test (SUT).
 If the SUT and its dependencies can be built from docker images, [TestContainers](https://github.com/testcontainers/testcontainers-java) can create and tear-down containers during the testing phase of the build.
 This allows integration tests to be preformed against a real instance of the SUT rather than relying on mocks.
 
 Key points:
 - Separation of unit test and integration test phases during the build
 - Separation of unit test and integration test source files within the module
-- Uses [TestContainers](https://github.com/testcontainers/testcontainers-java) to create and tear-down a container running a simple API as our SUT.
+- Use of [TestContainers](https://github.com/testcontainers/testcontainers-java) to create and tear-down a container running a simple API as our SUT.
 
-## Separating unit test and integration test phases
+## Separating unit test and integration test build phases
 
 While the [Maven Surefire](http://maven.apache.org/surefire/maven-surefire-plugin/) plugin is designed to run unit tests, the [Maven Failsafe](https://maven.apache.org/surefire/maven-failsafe-plugin/) plugin is designed to run integration tests.
 By default both plugins will include test classes based on the wildcard patterns described [here](http://maven.apache.org/surefire/maven-surefire-plugin/examples/inclusion-exclusion.html) and [here](https://maven.apache.org/surefire/maven-failsafe-plugin/examples/inclusion-exclusion.html).
@@ -28,7 +28,7 @@ With both plugins enabled and test categories defined, executing maven's build p
 It's good practice to separate integration test sources from unit test sources. This is often achieved by moving them into a different module. This project demonstrates how it can be achieved within the same module.
 
 Integration test source files are moved under `src\integration\java` and integration test resources are moved under `src\integration\resources`.
-By default, maven will not include these directories during the build. Using the [Build Helper Maven Plugin](http://www.mojohaus.org/build-helper-maven-plugin/index.html) we can add additional test source directories and resource directories.
+By default maven will not include these directories during the build. Using the [Build Helper Maven Plugin](http://www.mojohaus.org/build-helper-maven-plugin/index.html) we can add additional test source directories and resource directories.
 See the documentation [here](http://www.mojohaus.org/build-helper-maven-plugin/usage.html) for usage and examples.
 
 ## License
