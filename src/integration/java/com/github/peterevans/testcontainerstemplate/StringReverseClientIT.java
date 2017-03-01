@@ -35,6 +35,6 @@ public class StringReverseClientIT {
         String testStr = "reverse-me";
         String expected = "em-esrever";
         String actual = srClient.reverse(testStr);
-        assertEquals(expected, actual);
+        assertEquals("A string can be reversed using the 'reverse' API endpoint.", expected, actual);
     }
 }

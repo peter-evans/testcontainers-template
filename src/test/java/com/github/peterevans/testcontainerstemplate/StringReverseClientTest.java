@@ -3,6 +3,9 @@ package com.github.peterevans.testcontainerstemplate;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+
 /**
  * Unit tests for StringReverseClient.
  */
@@ -11,5 +14,6 @@ public class StringReverseClientTest {
     @Test
     public void canCreateStringReverseClient() throws Exception {
         StringReverseClient srClient = new StringReverseClient("localhost", 8080);
+        assertNotNull("An instance of StringReverseClient can be created.", srClient);
     }
 }
