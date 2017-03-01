@@ -7,7 +7,7 @@ This allows integration tests to be preformed against a real instance of the SUT
 Key points:
 - Separation of unit test and integration test phases during the build
 - Separation of unit test and integration test source files within the module
-- Use of [TestContainers](https://github.com/testcontainers/testcontainers-java) to create and tear-down a container running a simple API as our SUT.
+- Use of [TestContainers](https://github.com/testcontainers/testcontainers-java) to create and tear-down a container running a simple API as our SUT
 
 ## Separating unit test and integration test build phases
 
