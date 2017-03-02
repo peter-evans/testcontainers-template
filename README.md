@@ -1,5 +1,7 @@
 # testcontainers-template
 
+[![Build Status](https://travis-ci.org/peter-evans/testcontainers-template.svg?branch=master)](https://travis-ci.org/peter-evans/testcontainers-template)
+
 This is a bare-bones project demonstrating how the [TestContainers](https://github.com/testcontainers/testcontainers-java) library can be used to perform integration tests against a containerised system under test (SUT).
 If the SUT and its dependencies can be built from docker images, [TestContainers](https://github.com/testcontainers/testcontainers-java) can create and tear-down containers during the testing phase of the build.
 This allows integration tests to be preformed against a real instance of the SUT rather than relying on mocks.
