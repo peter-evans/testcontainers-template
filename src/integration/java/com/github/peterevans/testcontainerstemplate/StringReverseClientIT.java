@@ -5,6 +5,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.wait.Wait;
 import org.testcontainers.images.builder.ImageFromDockerfile;
 
 import static org.junit.Assert.assertEquals;
@@ -19,7 +20,8 @@ public class StringReverseClientIT {
             new ImageFromDockerfile()
                     .withFileFromClasspath("nginx.conf", "string-reverse-server/nginx.conf")
                     .withFileFromClasspath("Dockerfile", "string-reverse-server/Dockerfile"))
-                    .withExposedPorts(8080);
+                    .withExposedPorts(8080)
+                    .waitingFor(Wait.forHttp("/"));
 
     private StringReverseClient srClient;
 
