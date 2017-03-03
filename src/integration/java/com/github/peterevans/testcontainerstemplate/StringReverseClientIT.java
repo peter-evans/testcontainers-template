@@ -24,7 +24,7 @@ public class StringReverseClientIT {
     private StringReverseClient srClient;
 
     @Before
-    public void testSetup() throws Exception {
+    public void setUp() throws Exception {
         srClient = new StringReverseClient(
                 srContainer.getContainerIpAddress(),
                 srContainer.getMappedPort(8080));
