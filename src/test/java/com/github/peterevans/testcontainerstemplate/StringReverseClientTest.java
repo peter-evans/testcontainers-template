@@ -2,7 +2,7 @@ package com.github.peterevans.testcontainerstemplate;
 
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.MockWebServer;
-import org.junit.Rule;
+import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -14,8 +14,9 @@ import static org.junit.Assert.assertNotNull;
  */
 @Category(UnitTest.class)
 public class StringReverseClientTest {
-    @Rule
-    public MockWebServer mockWebServer = new MockWebServer();
+
+    @ClassRule
+    public static final MockWebServer mockWebServer = new MockWebServer();
 
     @Test
     public void canCreateStringReverseClient() throws Exception {

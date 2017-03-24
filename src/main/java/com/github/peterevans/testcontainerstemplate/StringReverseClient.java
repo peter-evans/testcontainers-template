@@ -8,9 +8,10 @@ import java.io.IOException;
  * A simple client for our StringReverse API.
  */
 public class StringReverseClient {
+
     private static final String CONTENT_TYPE_TEXTPLAIN = "text/plain";
-    private OkHttpClient client = new OkHttpClient();
-    private String url;
+    private final OkHttpClient client = new OkHttpClient();
+    private final String url;
 
     public StringReverseClient(String ipAddress, int port) {
         this.url = String.format("http://%s:%d", ipAddress, port);

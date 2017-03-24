@@ -1,7 +1,7 @@
 package com.github.peterevans.testcontainerstemplate;
 
 import org.junit.Before;
-import org.junit.Rule;
+import org.junit.ClassRule;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.testcontainers.containers.GenericContainer;
@@ -15,15 +15,16 @@ import static org.junit.Assert.assertEquals;
  */
 @Category(IntegrationTest.class)
 public class StringReverseClientIT {
-    @Rule
-    public GenericContainer srContainer = new GenericContainer(
+
+    private StringReverseClient srClient;
+
+    @ClassRule
+    public static final GenericContainer srContainer = new GenericContainer(
             new ImageFromDockerfile()
                     .withFileFromClasspath("nginx.conf", "string-reverse-server/nginx.conf")
                     .withFileFromClasspath("Dockerfile", "string-reverse-server/Dockerfile"))
                     .withExposedPorts(8080)
                     .waitingFor(Wait.forHttp("/"));
-
-    private StringReverseClient srClient;
 
     @Before
     public void setUp() throws Exception {
@@ -34,9 +35,8 @@ public class StringReverseClientIT {
 
     @Test
     public void canReverseString() throws Exception {
-        String testStr = "reverse-me";
         String expected = "em-esrever";
-        String actual = srClient.reverse(testStr);
+        String actual = srClient.reverse("reverse-me");
         assertEquals("A string can be reversed using the 'reverse' API endpoint.", expected, actual);
     }
 }
